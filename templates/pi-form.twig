@@ -57,8 +57,13 @@
                     <div class="error-dialog">
                         <img class="float-l erroricon" alt="gtk-dialog-error"
                              src="{{ baseurlpath }}resources/icons/experience/gtk-dialog-error.48x48.png"/>
+                        {% if errorCode is same as '1312' %}
+                        <h2>{{ 'Authentication failed'|trans }}</h2>
+                        <strong>{{ 'Please try again!'|trans }}</strong>
+                        {% else %}
                         <h2>{{ 'An error occurred'|trans }}</h2>
                         <strong>"Error {{ errorCode }}: {{ errorMessage }}"</strong>
+                        {% endif %}
                     </div>
                     {% endif %}
 
