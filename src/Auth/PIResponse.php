@@ -82,7 +82,11 @@ class PIResponse
         if (!isset($map['result']['value']))
         {
             $ret->errorCode = $map['result']['error']['code'];
-            $ret->errorMessage = $map['result']['error']['message'];
+	    $ret->errorMessage = $map['result']['error']['message'];
+	    if ($ret->errorCode == 904){
+              $ret->errorCode = 1312;
+              $ret->errorMessage = 'Sorry, authentication failed... Please try again!';
+            }
             return $ret;
         }
 
@@ -131,7 +135,9 @@ class PIResponse
         }
         elseif ($r === AuthenticationStatus::REJECT)
         {
-            $ret->authenticationStatus = AuthenticationStatus::REJECT;
+	    $ret->authenticationStatus = AuthenticationStatus::REJECT;
+            $ret->errorCode = 1312;
+            $ret->errorMessage = 'Sorry, authentication failed... Please try again!';
         }
         else
         {
