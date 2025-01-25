@@ -93,7 +93,7 @@
                                         {% if forceUsername %}
                                         <h3>{{ username }}</h3>
                                         <input type="hidden" id="username" name="username" value="{{ username|e }}"/>
-                                        {% elseif username is null %}
+                                        {% else %}
                                         <label for="username" class="sr-only">
                                             {{ 'Username'|trans }}
                                         </label>
